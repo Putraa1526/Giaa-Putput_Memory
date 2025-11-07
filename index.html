@@ -3,7 +3,8 @@
 <head>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js"; 
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAsuEroz9oVtYbgbbOMWxgBZE0SCxyfeJU",
@@ -11,19 +12,24 @@
             projectId: "gia-putput-memories",
             storageBucket: "gia-putput-memories.firebasestorage.app",
             messagingSenderId: "186289481621",
-            appId: "1:186289481621:web:421dc0d1f46b6cb726f89c",
-            measurementId: "G-F5NS6GH3YJ",
-            databaseURL: "https://gia-putput-memories-default-rtdb.firebaseio.com"
+            appId: "1:186289481621:web:793cc5dc8437fa0b26f89c",
+            measurementId: "G-NNBZQZF30P"
         };
 
-        // Inisialisasi Firebase
         const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
         const db = getDatabase(app);
 
-        // Buat referensi database untuk catatan
         window.notesRef = ref(db, "notes");
         window.set = set;
         window.onValue = onValue;
+    </script>
+
+    <script>
+        const addNoteBtn = document.getElementById("addNoteBtn");
+        const newNote = document.getElementById("newNote");
+        const noteAuthor = document.getElementById("noteAuthor");
+        const notesContainer = document.getElementById("notes");
     </script>
 
     <meta charset="UTF-8">
@@ -580,91 +586,76 @@
 
             <!--Buat Nambah Musik BG Saat Di Tab Galery-->
             <script>
-                // pastikan elemen HTML udah ada
-                const addNoteBtn = document.getElementById("addNoteBtn");
-                const newNote = document.getElementById("newNote");
-                const noteAuthor = document.getElementById("noteAuthor");
-                const notesContainer = document.getElementById("notes");
+                document.addEventListener("DOMContentLoaded", function() {
+                    const addNoteBtn = document.getElementById("addNoteBtn");
+                    const newNote = document.getElementById("newNote");
+                    const noteAuthor = document.getElementById("noteAuthor");
+                    const notesContainer = document.getElementById("notes");
 
-                // 🟢 Fungsi tambah pesan
-                addNoteBtn.addEventListener("click", () => {
+                    // Fungsi tambah pesan
+                    addNoteBtn.addEventListener("click", () => {
                     const text = newNote.value.trim();
                     const author = noteAuthor.value.trim();
 
                     if (text !== "" && author !== "") {
-                    const note = { author, text };
+                        const note = { author, text };
 
-                    onValue(notesRef, (snapshot) => {
+                        onValue(notesRef, (snapshot) => {
                         const notes = snapshot.exists() ? snapshot.val() : [];
                         notes.push(note);
+                        set(notesRef, notes).then(() => console.log("✅ Pesan disimpan ke Firebase"));
+                        }, { onlyOnce: true });
 
-                        set(notesRef, notes)
-                        .then(() => console.log("✅ Pesan disimpan ke Firebase"))
-                        .catch(err => console.error("❌ Gagal simpan:", err));
-                    }, { onlyOnce: true });
-
-                    newNote.value = "";
-                    noteAuthor.value = "";
+                        newNote.value = "";
+                        noteAuthor.value = "";
                     } else {
-                    alert("Isi nama dan pesan dulu ya 💖");
+                        alert("Isi nama dan pesan dulu ya 💖");
                     }
-                });
+                    });
 
-                // 🟢 Fungsi tampilkan pesan
-                function loadNotes() {
+                    // Fungsi tampilkan pesan
+                    function loadNotes() {
                     onValue(notesRef, (snapshot) => {
-                    notesContainer.querySelectorAll(".note").forEach(n => n.remove());
-
-                    if (snapshot.exists()) {
+                        notesContainer.innerHTML = "";
+                        if (snapshot.exists()) {
                         const notes = snapshot.val();
-
                         notes.forEach((note, index) => {
-                        const div = document.createElement("div");
-                        div.classList.add("note");
-                        div.innerHTML = `
+                            const div = document.createElement("div");
+                            div.classList.add("note");
+                            div.innerHTML = `
                             <strong>${note.author}:</strong>
                             <p>${note.text}</p>
-                            <button class="delete-btn" data-index="${index}" style="
-                            float: right;
-                            background: #ff4d6d;
-                            color: white;
-                            border: none;
-                            border-radius: 5px;
-                            padding: 4px 8px;
-                            cursor: pointer;
-                            font-size: 12px;
-                            ">Hapus</button>
-                        `;
-                        notesContainer.insertBefore(div, document.querySelector(".add-note"));
+                            <button class="delete-btn" data-index="${index}">Hapus</button>
+                            `;
+                            notesContainer.appendChild(div);
                         });
 
                         document.querySelectorAll(".delete-btn").forEach(btn => {
-                        btn.addEventListener("click", (e) => {
+                            btn.addEventListener("click", (e) => {
                             const index = e.target.dataset.index;
                             deleteNote(index);
+                            });
                         });
-                        });
-                    } else {
+                        } else {
                         notesContainer.innerHTML = "<p>Belum ada pesan 😄</p>";
-                    }
+                        }
                     });
-                }
+                    }
 
-                // 🟢 Fungsi hapus pesan
-                function deleteNote(index) {
+                    // Fungsi hapus pesan
+                    function deleteNote(index) {
                     onValue(notesRef, (snapshot) => {
-                    if (snapshot.exists()) {
+                        if (snapshot.exists()) {
                         const notes = snapshot.val();
                         notes.splice(index, 1);
-                        set(notesRef, notes)
-                        .then(() => console.log("🗑️ Pesan dihapus dari Firebase!"))
-                        .catch((err) => console.error("❌ Gagal hapus:", err));
-                    }
+                        set(notesRef, notes).then(loadNotes);
+                        }
                     }, { onlyOnce: true });
-                }
+                    }
 
-                // 🟢 Jalankan loadNotes() saat halaman dibuka
-                document.addEventListener("DOMContentLoaded", loadNotes);
+                    // Jalankan loadNotes saat halaman dibuka
+                    loadNotes();
+                });
             </script>
         </div>
     </div>
