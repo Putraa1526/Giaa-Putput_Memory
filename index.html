@@ -1,37 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js"; 
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyAsuEroz9oVtYbgbbOMWxgBZE0SCxyfeJU",
-            authDomain: "gia-putput-memories.firebaseapp.com",
-            projectId: "gia-putput-memories",
-            storageBucket: "gia-putput-memories.firebasestorage.app",
-            messagingSenderId: "186289481621",
-            appId: "1:186289481621:web:793cc5dc8437fa0b26f89c",
-            measurementId: "G-NNBZQZF30P"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const db = getDatabase(app);
-
-        window.notesRef = ref(db, "notes");
-        window.set = set;
-        window.onValue = onValue;
-    </script>
-
-    <script>
-        const addNoteBtn = document.getElementById("addNoteBtn");
-        const newNote = document.getElementById("newNote");
-        const noteAuthor = document.getElementById("noteAuthor");
-        const notesContainer = document.getElementById("notes");
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Love</title>
@@ -409,14 +378,13 @@
                     </div>
                     <div class="letter-content">
                         <h2>My lovely Gia</h2>
-                        <p>I Love You I Love You I Love You I Love You I Love You I Love You I Love You I Love You I Love You I Love You I Love YouI Love You I Love You I Love You I Love You I Love You I Love You </p><br>
-                        <!--<p>Akhirnyaa 2 tahun ki pacaran, ini longtext ku yang ke-3 eh ndatau keberapa mi. Nda nyangka ka bisa sampe sini seriuska, bahkan jadian ki saja nda espek ka bakal nu terima ka. Dan sudah banyak juga masalah yang kita berdua alami mulai dari 9/10, Prom queek, ilfeel, cemburu sama ale (cih), sampai masalah yang terjadi pada saat ku tulis ini (yang setengah" ka bicara). Walau banyak masalah yang kita berdua dialami tetap ka sayang sama kau, dan juga senang ka bisa sejauh ini sama kau.</p><br>
+                        <p>Akhirnyaa 2 tahun ki pacaran, ini longtext ku yang ke-3 eh ndatau keberapa mi. Nda nyangka ka bisa sampe sini seriuska, bahkan jadian ki saja nda espek ka bakal nu terima ka. Dan sudah banyak juga masalah yang kita berdua alami mulai dari 9/10, Prom queek, ilfeel, cemburu sama ale (cih), sampai masalah yang terjadi pada saat ku tulis ini (yang setengah" ka bicara). Walau banyak masalah yang kita berdua dialami tetap ka sayang sama kau, dan juga senang ka bisa sejauh ini sama kau.</p><br>
                         <p>Makasihh banget ka karena mau ko jadi pacar ku, dan makasih juga karena udah jadi pacar yang baik, pintar, rajin, cantik, imut, dan lucu (mungkin alay sih nu liat).  Kau perempuan pertama yang nyanyikan ka, yang ku post, first time telfonan juga sama kau, dan kau juga cewe pertama yang ku ajak ngedate walau Cuma di kopken, dan perempuan pertama yang buat ka nangis dan kalo bertanya ko kenapa sering nangis, yaa karena sayang ka sama kauu lah. </p><br>
                         <p>Maaff klo sering ka buat marah ko nah. lagi usaha ka buat perbaiki diri ku, nu ingat dulu se alay apa ka mulai dari emoji tengkorak, cium, nyengir, love” semua ku pake. Trus setelah emoji lebih alay ka lagi pake “ki”. Dan di sini lama ka sadar, dan kau juga mulai ilfeel ke saya trus disitu nda sadar diri ka bilang alay. Jadi terus menerus ka begitu, sampai akhirnya minta ko “break” sebulan. disitu kaya pusing sekali ka, kupikir terus kenapa nu ajak ka “break”. Terus mulai ka nyadar tapi ngga ku peduli dan bahkan waktu lagi break masih ku chat” ko pake kata kata alay. Tapi setelah break ngga terlalu begitu ma Cuma masih ada sedikit, lama kelamaan mulai ma ngetik normal. Dan pas ku cek chat ta yang sebelum “break”, ditambah itu hari jujur ko ke saya klo pas nu dry text ka itu lagi ilfeel ko. Disitu kaya mau ka perbaiki diri biar nda alay, sampe sekarang nda ku tau mi tapi menurut ku nda se alay dulu dan lebih layak di liat chat nya. Makasii ka juga sama kau karena gara” kau ini normal ketikan ku.</p><br>
                         <p>Ku saaaaaayaang banget ko asli. Sangking sayangnya sama kau baru seminggu ki nda ketemuan kangen ma, terus juga pas selesai gradu itu pas sampe rumah ka rasanya toh… kaya nda mungkin mka ketemu sama kau karena beda sekolah, terus juga jauh sekolah ta, sama dulu nda bisa ka klo pergi sendirian jadi ku pikir gabakalan ketemuan mki. Tapi setelah setahun nda ketemu akhirnya ketemuan ki juga walau sebentar ji tapi ku rasa seruuu banget klo bareng kau, kek rasanya itu senang banget ka, nda berhenti ka senyum karena first time ku itu + cantik banget giaa nyaa.  Tapi kek kenapa cepat sekali itu jam nya(duh kelilipan jir). Maaf ka juga karena nda bisa ka ajak ko ketemuan di daerah makassar karena nu tau ma, insyaallah itu tahun depan.</p><br>
                         <p>Kayanya Cuma itu ji yappingan ku, semoga nda sibuk ko dan bisa ki ketemuan nanti tanggal 14 karena penasaran ka mau liat live reaction nyaa. Mencoba ka buat ini se effort mungkin karena tahun lalu nda bisa ka kasih apa” ke kau, karena lagi ilfeel ko juga sama saya. Jadi tahun ini harus ka effort yang pokok nya bisa buat senang ko, yang kali ini beda sama yang gradu karena ini ada desain nya pas gradu Cuma tulisan aja. Semoga senang ko sama hadiah “kecil” ku ini. Dan semoga kedepanya hubungan bisa sampe lama bangett. Atau nanti jodoh ki?? Tapi “siapa yang tau bukan ka tuhan”-gia2025. Intinya harus bagus nah komunikasi ta berdua, jangan sampai marahan ki gara” komunikasi yang tidak bagus. Sekali lagi makasih nah karena mau ko pacaran sama orang kek saya yang pakbal dikit. Makasiii banget ka sama kau, I love you giaa💞💞</p><br>
                         <br>
-                        <h2>Iyaa btw itu nu lupa kah?, yang ada mau ku kasih kan ko</h2>-->
+                        <h2>Eh iyaa btw itu nu lupa kah?, yang ada mau ku kasih kan ko</h2>
                     </div>
                 </div>
             </div>
@@ -490,21 +458,20 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Notes Tab -->
+    
             <!-- Notes Tab -->
             <div class="tab-content" id="notes">
                 <h2>Tinggalkan Pesan Untuk Pasangan</h2>
+
+                <div id="notesContainer"></div>
+
                 <!-- Form Tambah Pesan -->
-                <div class="add-note" style="margin-top: 20px;">
-                    <input type="text" id="noteAuthor" placeholder="Nama kamu..." 
-                        style="width:100%;padding:10px;margin-bottom:10px;border-radius:10px;
-                        border:2px solid #ffb7c5;font-family:'Montserrat',sans-serif;font-size:14px;">
-                    <textarea id="newNote" placeholder="Tulis pesan kamu di sini..." 
-                        style="width:100%;height:80px;padding:10px;border-radius:10px;
-                        border:2px solid #ffb7c5;resize:none;font-family:'Montserrat',sans-serif;font-size:14px;"></textarea>
-                    <button id="addNoteBtn" class="submit-btn" style="margin-top:10px;">Tambahkan Pesan 💌</button>
-                    <!--<button id="clearNotesBtn" class="submit-btn" style="margin-top:10px; background:#ff4d6d;">Hapus Semua Pesan ❌</button>-->
+                <div style="margin-top: 20px; text-align:center;">
+                    <input type="text" id="nameInput" placeholder="Nama kamu..." 
+                        style="padding:10px; width:25%; border-radius:10px; border:2px solid #d81b60; outline:none;">
+                    <input type="text" id="messageInput" placeholder="Tulis pesanmu di sini..." 
+                        style="padding:10px; width:40%; border-radius:10px; border:2px solid #d81b60; outline:none; margin-left:10px;">
+                    <button id="addNoteBtn" class="submit-btn" style="margin-left:10px;">Tambah Pesan</button>
                 </div>
             </div>
 
@@ -578,84 +545,127 @@
                     </div>
                     <div class="gallery-item">
                         <img src="GiaAtas.jpg">
-                    </div>
-                    
+                    </div>     
                 </div>
             </div>
 
 
             <!--Buat Nambah Musik BG Saat Di Tab Galery-->
             <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    const addNoteBtn = document.getElementById("addNoteBtn");
-                    const newNote = document.getElementById("newNote");
-                    const noteAuthor = document.getElementById("noteAuthor");
-                    const notesContainer = document.getElementById("notes");
+                // Tunggu interaksi pertama pengguna (klik di mana saja)
+                document.addEventListener('focus', function() {
+                    const music = document.getElementById('bg-music');
+                    music.play()
+                        .then(() => console.log("Musik mulai 🎵"))
+                        .catch(err => console.log("Gagal memutar musik:", err));
+                }, { once: true });
+                const tabs = document.querySelectorAll('.tab');
+                const tabContents = document.querySelectorAll('.tab-content');
+                const bgMusic = document.getElementById('bg-music'); // ambil audio di gallery
 
-                    // Fungsi tambah pesan
-                    addNoteBtn.addEventListener("click", () => {
-                    const text = newNote.value.trim();
-                    const author = noteAuthor.value.trim();
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        const targetTab = this.getAttribute('data-tab');
 
-                    if (text !== "" && author !== "") {
-                        const note = { author, text };
+                        // Update active tab
+                        tabs.forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
 
-                        onValue(notesRef, (snapshot) => {
-                        const notes = snapshot.exists() ? snapshot.val() : [];
-                        notes.push(note);
-                        set(notesRef, notes).then(() => console.log("✅ Pesan disimpan ke Firebase"));
-                        }, { onlyOnce: true });
-
-                        newNote.value = "";
-                        noteAuthor.value = "";
-                    } else {
-                        alert("Isi nama dan pesan dulu ya 💖");
-                    }
-                    });
-
-                    // Fungsi tampilkan pesan
-                    function loadNotes() {
-                    onValue(notesRef, (snapshot) => {
-                        notesContainer.innerHTML = "";
-                        if (snapshot.exists()) {
-                        const notes = snapshot.val();
-                        notes.forEach((note, index) => {
-                            const div = document.createElement("div");
-                            div.classList.add("note");
-                            div.innerHTML = `
-                            <strong>${note.author}:</strong>
-                            <p>${note.text}</p>
-                            <button class="delete-btn" data-index="${index}">Hapus</button>
-                            `;
-                            notesContainer.appendChild(div);
+                        // Tampilkan konten sesuai tab
+                        tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === targetTab) {
+                            content.classList.add('active');
+                        }
                         });
 
-                        document.querySelectorAll(".delete-btn").forEach(btn => {
-                            btn.addEventListener("click", (e) => {
-                            const index = e.target.dataset.index;
-                            deleteNote(index);
-                            });
+                        // Kontrol musik sesuai tab
+                        if (targetTab === 'gallery') {
+                        bgMusic.play().catch(() => {
+                            console.log('Klik dulu halaman agar musik bisa main 🎵');
                         });
                         } else {
-                        notesContainer.innerHTML = "<p>Belum ada pesan 😄</p>";
+                        bgMusic.pause();
+                        bgMusic.currentTime = 0; // reset ke awal biar ulang dari awal kalau balik lagi
                         }
                     });
-                    }
-
-                    // Fungsi hapus pesan
-                    function deleteNote(index) {
-                    onValue(notesRef, (snapshot) => {
-                        if (snapshot.exists()) {
-                        const notes = snapshot.val();
-                        notes.splice(index, 1);
-                        set(notesRef, notes).then(loadNotes);
-                        }
-                    }, { onlyOnce: true });
-                    }
-
-                    // Jalankan loadNotes saat halaman dibuka
-                    loadNotes();
                 });
+
+//-------------------------------------------------------------------------------------------------------------------------------
+
+                const notesContainer = document.getElementById("notesContainer");
+                const addNoteBtn = document.getElementById("addNoteBtn");
+                const nameInput = document.getElementById("nameInput");
+                const messageInput = document.getElementById("messageInput");
+
+                // Ambil data dari localStorage
+                let notes = JSON.parse(localStorage.getItem("loveNotes")) || [];
+
+                // Fungsi untuk render ulang pesan
+                function renderNotes() {
+                    notesContainer.innerHTML = "";
+                    notes.forEach((note, index) => {
+                        const div = document.createElement("div");
+                        div.classList.add("note");
+                        div.style = `
+                            background:#ffe3ec;
+                            border-radius:15px;
+                            padding:10px 15px;
+                            margin:10px auto;
+                            width:80%;
+                            text-align:left;
+                            box-shadow:0 2px 6px rgba(0,0,0,0.1);
+                        `;
+                        div.innerHTML = `
+                            <p><strong>${note.name}</strong>: ${note.message}</p>
+                            <button class="delete-btn" style="
+                                background:#ff4d6d;
+                                color:white;
+                                border:none;
+                                padding:5px 10px;
+                                border-radius:8px;
+                                margin-top:5px;
+                                cursor:pointer;
+                            ">Hapus</button>
+                        `;
+
+                        // Hapus 1 pesan
+                        div.querySelector(".delete-btn").addEventListener("click", () => {
+                            notes.splice(index, 1);
+                            saveNotes();
+                            renderNotes();
+                        });
+
+                        notesContainer.appendChild(div);
+                    });
+                }
+
+                // Simpan ke localStorage
+                function saveNotes() {
+                    localStorage.setItem("loveNotes", JSON.stringify(notes));
+                }
+
+                // Tambah pesan baru
+                addNoteBtn.addEventListener("click", () => {
+                    const name = nameInput.value.trim();
+                    const message = messageInput.value.trim();
+                    if (!name || !message) return alert("Isi nama dan pesan dulu ya 💌");
+
+                    notes.push({ name, message });
+                    saveNotes();
+                    renderNotes();
+
+                    nameInput.value = "";
+                    messageInput.value = "";
+                });
+
+                // Tekan Enter buat kirim juga
+                messageInput.addEventListener("keypress", e => {
+                    if (e.key === "Enter") addNoteBtn.click();
+                });
+
+                // Render saat awal buka
+                renderNotes();
             </script>
         </div>
     </div>
@@ -765,3 +775,7 @@
     </script>
 </body>
 </html>
+
+
+
+
